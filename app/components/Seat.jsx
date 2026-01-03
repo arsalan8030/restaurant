@@ -1,16 +1,22 @@
-export default function Seat({ seat, booked, selected, onClick }) {
+// components/Seat.jsx
+
+export default function Seat({ label, isSelected, onSelect }) {
   return (
     <button
-      disabled={booked}
-      onClick={onClick}
+      onClick={onSelect}
       className={`
-        w-10 h-10 rounded text-sm font-bold
-        ${booked ? "bg-red-500 text-white" :
-          selected ? "bg-blue-500 text-white" :
-          "bg-green-500 text-white"}
+        w-12 h-12 rounded-lg text-sm font-semibold
+        flex items-center justify-center
+        transition-all duration-200
+        ${
+          isSelected
+            ? "bg-blue-600 text-white scale-105 shadow-md"
+            : "bg-green-500 text-white hover:bg-green-600"
+        }
       `}
+      aria-label={`Seat ${label}`}
     >
-      {seat}
+      {label}
     </button>
   );
 }

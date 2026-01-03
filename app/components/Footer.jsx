@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-[#0b0b0b] text-gray-400">
       
       {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-4">
+      <div className="max-w-7xl mx-auto px-9 py-9 grid gap-10 md:grid-cols-3">
         
         {/* Brand */}
         <div>
@@ -18,7 +18,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Navigation */}
+        {/* Navigation
         <div>
           <h4 className="text-white font-semibold mb-4">Company</h4>
           <ul className="space-y-3 text-sm">
@@ -26,17 +26,17 @@ export default function Footer() {
             <li className="hover:text-white cursor-pointer">Restaurants</li>
             <li className="hover:text-white cursor-pointer">Book Seat</li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Support */}
-        <div>
+        { <div>
           <h4 className="text-white font-semibold mb-4">Support</h4>
           <ul className="space-y-3 text-sm">
             <li className="hover:text-white cursor-pointer">Help Center</li>
             <li className="hover:text-white cursor-pointer">Terms & Conditions</li>
             <li className="hover:text-white cursor-pointer">Privacy Policy</li>
           </ul>
-        </div>
+        </div> }
 
         {/* Social */}
         <div>

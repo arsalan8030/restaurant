@@ -1,4 +1,4 @@
-2import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const BookingSchema = new mongoose.Schema({
   date: String,
