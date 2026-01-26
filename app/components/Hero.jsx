@@ -65,12 +65,10 @@ export default function Hero() {
                 <label className="text-white text-xs font-bold uppercase tracking-widest mb-2 block">
                   Time
                 </label>
-                <select className="w-full bg-white rounded-xl px-4 py-3 font-semibold text-gray-900 focus:ring-2 focus:ring-red-500">
-                  <option>7:00 PM</option>
-                  <option>7:30 PM</option>
-                  <option>8:00 PM</option>
-                  <option>9:00 PM</option>
-                </select>
+                <input
+                  type="time"
+                  className="w-full bg-white rounded-xl px-4 py-3 font-semibold text-gray-900 focus:ring-2 focus:ring-red-500"
+                />
               </div>
 
               {/* Guests */}

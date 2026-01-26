@@ -5,20 +5,42 @@ import Seat from "./Seat";
 export default function SeatGrid({
   seats,
   selectedSeats,
-  onToggleSeat,
+  toggleSeat,
+  hoveredSeat,
+  setHoveredSeat,
 }) {
-  // Only show available seats
-  const availableSeats = seats.filter((seat) => !seat.booked);
+  // Group seats by row
+  const groupedSeats = {};
+  seats.forEach((seat) => {
+    const row = seat.label.charAt(0);
+    if (!groupedSeats[row]) {
+      groupedSeats[row] = [];
+    }
+    groupedSeats[row].push(seat);
+  });
+
+  const rows = Object.keys(groupedSeats).sort();
 
   return (
-    <div className="grid grid-cols-5 gap-4 justify-center">
-      {availableSeats.map((seat) => (
-        <Seat
-          key={seat.id}
-          label={seat.label}
-          isSelected={selectedSeats.includes(seat.label)}
-          onSelect={() => onToggleSeat(seat.label)}
-        />
+    <div className="space-y-6">
+      {rows.map((row) => (
+        <div key={row} className="flex items-center justify-center gap-2">
+          <span className="w-8 text-center font-bold text-slate-600 text-lg">{row}</span>
+          <div className="flex gap-3">
+            {groupedSeats[row].map((seat) => (
+              <Seat
+                key={seat.id}
+                label={seat.label}
+                isSelected={selectedSeats.includes(seat.label)}
+                isBooked={seat.booked}
+                isHovered={hoveredSeat === seat.label}
+                onSelect={() => !seat.booked && toggleSeat(seat.label)}
+                onHover={() => setHoveredSeat(seat.label)}
+                onLeave={() => setHoveredSeat(null)}
+              />
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   );
