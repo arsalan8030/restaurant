@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import html2canvas from "html2canvas";
 import { 
   CheckCircleIcon, 
@@ -25,7 +25,7 @@ import Confetti from "react-confetti";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useRef } from "react";
 
-export default function PaymentPage() {
+function PaymentPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [processing, setProcessing] = useState(false);
@@ -1105,5 +1105,13 @@ export default function PaymentPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center bg-slate-900"><p className="text-white">Loading...</p></div>}>
+      <PaymentPageContent />
+    </Suspense>
   );
 }
