@@ -1,12 +1,12 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { MdCheckCircle, MdEventSeat, MdLocationOn, MdAccessTime } from "react-icons/md";
 
-export default function SeatsPage() {
+function SeatsPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -423,5 +423,13 @@ export default function SeatsPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function SeatsPage() {
+  return (
+    <Suspense fallback={<div className="w-full h-screen flex items-center justify-center bg-slate-900"><p className="text-white">Loading...</p></div>}>
+      <SeatsPageContent />
+    </Suspense>
   );
 }
